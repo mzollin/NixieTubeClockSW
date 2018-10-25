@@ -19,7 +19,7 @@ void init_rtc(void) {
     sei();
 }
 
-Datetime get_datetime(void) {
+DatetimeBcd get_datetime(void) {
     uint8_t data[7];
 
     while(pcf2127_get_datetime(&data)) {
@@ -44,7 +44,7 @@ Datetime get_datetime(void) {
     return datetime;
     */
 
-    Datetime datetime;
+    DatetimeBcd datetime;
 
     datetime.seconds = 0;
     datetime.minutes = data[MINUTES_BYTE];

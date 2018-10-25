@@ -16,10 +16,10 @@ void enable_display(void) {
 }
 
 void disable_display(void) {
-    PORTB |= (1<<BOOST_EN);
+    PORTB |= (1<<BOOST_EN); 
 }
 
-void display_datetime(Datetime datetime) {
+void display_datetime(DatetimeBcd datetime) {
     enable_display();
-    hv5522_SendTime(datetime.hours, datetime.minutes, datetime.seconds);
+    //hv5522_SendTime(datetime.hours, datetime.minutes, datetime.seconds);
 }

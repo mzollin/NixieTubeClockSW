@@ -5,7 +5,7 @@
 
 #define LDR PC0
 
-#define	PIR PC1
+#define PIR PC1
 
 #define EXP_0 PC2
 #define EXP_1 PC3

@@ -1,13 +1,13 @@
 #define F_CPU 11059200UL
 
 #include "hardware.h"
-#include "rtc.h"
-#include "display.h"
+#include "RTC/rtc.h"
+#include "Display/display.h"
 #include <stdbool.h>
 #include <util/delay.h>
 
 int main(void) {
-	init_io();
+    init_io();
     init_rtc();
     init_display();
     while (true) {

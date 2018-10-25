@@ -54,3 +54,5 @@ dkms.conf
 # Atmel Studio Configuration Files
 *.xml
 *.cproj
+*.vs
+Debug
