@@ -23,9 +23,8 @@ void init_rtc(void) {
 }
 
 DatetimeBcd get_datetime(void) {
-    uint8_t data[7];
-
-    while(pcf2127_get_datetime(&data)) {
+    DatetimeBcd datetime;
+    while(pcf2127_get_datetime(&datetime)) {
 
     }
 
@@ -36,27 +35,11 @@ DatetimeBcd get_datetime(void) {
     } while (error);
     */
 
-    /*
-    Datetime datetime;
-    datetime.seconds = data[SECONDS_BYTE];
-    datetime.minutes = data[MINUTES_BYTE];
-    datetime.hours = data[HOURS_BYTE];
-    datetime.days = data[DAYS_BYTE];
-    datetime.months = data[MONTHS_BYTE];
-    datetime.years = data[YEARS_BYTE];
     return datetime;
-    */
+}
 
-    DatetimeBcd datetime;
+void set_datetime(DatetimeBcd datetime) {
 
-    datetime.seconds.all = data[SECONDS_BYTE];
-    datetime.minutes.all = data[MINUTES_BYTE];
-    datetime.hours.all = data[HOURS_BYTE];
-
-    datetime.days.all = data[DAYS_BYTE];
-    datetime.months.all = data[MONTHS_BYTE];
-    datetime.years.all = data[YEARS_BYTE];
-    return datetime;
 }
 
 ISR(INT0_vect)

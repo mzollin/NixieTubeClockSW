@@ -10,6 +10,7 @@
 
 void init_display(void);
 void enable_display(void);
+void disable_display(void);
 void display_datetime(DatetimeBcd datetime);
 
 #endif /* DISPLAY_H_ */

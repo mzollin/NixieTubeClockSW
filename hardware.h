@@ -4,6 +4,9 @@
 #ifndef HARDWARE_H_
 #define HARDWARE_H_
 
+#include <avr/io.h>
+#include <stdbool.h>
+
 #define PWM PB1
 
 #define LDR PC0
@@ -21,7 +24,16 @@
 #define ENC_L PD5
 #define ENC_P PD7
 
+enum { BOUNCE_TIMEOUT = 20 };
+
+typedef struct {
+    uint8_t left_counts;
+    uint8_t right_counts;
+    bool center_press;
+} Encoder;
+
 void init_io(void);
-void check_encoder(void);
+Encoder check_encoder(void);
+void wait_encoder_click(void);
 
 #endif /* HARDWARE_H_ */

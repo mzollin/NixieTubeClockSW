@@ -3,6 +3,7 @@
 
 #include "hardware.h"
 #include <avr/io.h>
+#include <util/delay.h>
 
 void init_io(void) {
     // enable pull-up on PIR sensor input
@@ -17,6 +18,20 @@ void init_io(void) {
     PORTD |= (1<<GPS_TXD) | (1<<GPS_RXD) | (1<<GPS_INT);
 }
 
-void check_encoder(void) {
+Encoder check_encoder(void) {
+    Encoder encoder;
+    encoder.center_press = true;
+    for (uint8_t i = 0; i < BOUNCE_TIMEOUT; ++i) {
+        if (PIND & (1<<ENC_P)) {
+            encoder.center_press = false;
+            _delay_ms(1);
+        }
+    }
+    return encoder;
+}
 
+void wait_encoder_click(void) {
+    while(check_encoder().center_press);
+    while(!check_encoder().center_press);
+    while(check_encoder().center_press);
 }

@@ -23,13 +23,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <stdbool.h>
 #include <util/delay.h>
 
+void check_settime(void);
+
 int main(void) {
     init_io();
     init_rtc();
     init_display();
     while (true) {
+        check_settime();
         display_datetime(get_datetime());
-        _delay_ms(100);
-        check_encoder();
+        _delay_ms(10);
+    }
+}
+
+void check_settime(void) {
+    if (check_encoder().center_press) {
+        DatetimeBcd datetime = get_datetime();
+        wait_encoder_click();
+        wait_encoder_click();
+        wait_encoder_click();
+        wait_encoder_click();
+        wait_encoder_click();
+        set_datetime(datetime);
     }
 }
