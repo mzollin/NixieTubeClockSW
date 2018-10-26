@@ -1,4 +1,5 @@
 // Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
+// GNU General Public License Version 3
 
 #ifndef HV5522_H_
 #define HV5522_H_
