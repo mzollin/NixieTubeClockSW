@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
+*/
+
 #include "hardware.h"
 #include <avr/io.h>
 

@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
+*/
+
 #ifndef PCF2127_H_
 #define PCF2127_H_
 

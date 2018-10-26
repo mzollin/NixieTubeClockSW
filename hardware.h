@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
+*/
+
 #ifndef HARDWARE_H_
 #define HARDWARE_H_
 

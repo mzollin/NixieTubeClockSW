@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
+*/
+
 #ifndef RTC_H_
 #define RTC_H_
 

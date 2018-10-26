@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
+*/
+
 #ifndef DISPLAY_H_
 #define DISPLAY_H_
 

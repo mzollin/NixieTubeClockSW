@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
+*/
+
 #include "rtc.h"
 #include "pcf2127.h"
 #include <avr/interrupt.h>

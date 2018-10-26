@@ -1,3 +1,7 @@
+/*
+Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
+*/
+
 #define F_CPU 11059200UL
 
 #include "pcf2127.h"
