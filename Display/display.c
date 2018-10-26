@@ -21,6 +21,5 @@ void disable_display(void) {
 
 void display_datetime(DatetimeBcd datetime) {
     enable_display();
-    // FIXME: filter out integrity_fail flag
-    hv5522_SendTime(datetime.hours.tens, datetime.hours.units, datetime.minutes.tens, datetime.minutes.units, datetime.seconds.tens, datetime.seconds.units);
+    hv5522_SendDigits(datetime.hours.tens, datetime.hours.units, datetime.minutes.tens, datetime.minutes.units, datetime.seconds.tens, datetime.seconds.units);
 }

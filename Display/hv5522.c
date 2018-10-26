@@ -43,8 +43,9 @@ uint16_t hv5522_Bin2Dec(uint8_t binary)
     decimal = (1<<(binary - 1));
     
     return decimal;
-}    
+}
 
+/*
 void hv5522_SendDateTime(uint8_t x100, uint8_t x10, uint8_t x1, uint8_t is_time) // send data to display either time or date
 {
     
@@ -276,7 +277,9 @@ void hv5522_SendDateTime(uint8_t x100, uint8_t x10, uint8_t x1, uint8_t is_time)
     lastx10 = x10;    
     lastx100 = x100;
 }
+*/
 
+/*
 void hv5522_DisplayDate(uint8_t day, uint8_t month, uint8_t year)            // display date
 {
     assert((day >= 1) && (day <= 31));
@@ -293,8 +296,9 @@ void hv5522_DisplayTime(uint8_t hour, uint8_t minute, uint8_t second)        // 
     
     hv5522_SendDateTime(hour, minute, second, 1);
 }
+*/
 
-void hv5522_SendTime(uint8_t ll, uint8_t rl, uint8_t lm, uint8_t rm, uint8_t lr, uint8_t rr) {
+void hv5522_SendDigits(uint8_t ll, uint8_t rl, uint8_t lm, uint8_t rm, uint8_t lr, uint8_t rr) {
     uint8_t data[8] = {0};
 
     data[7]  = hv5522_Bin2Dec(rr);
