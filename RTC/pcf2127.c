@@ -25,7 +25,7 @@ uint8_t pcf2127_refresh_otp(void) {
     return error;
 }
 
-uint8_t pcf2127_get_datetime(uint8_t (* const datetime)[DATETIME_SIZE]) {
+uint8_t pcf2127_get_datetime(DatetimeBcd *const datetime) {
     uint8_t error = i2c_start(PCF2127_ADDR + I2C_WRITE);
     error |= i2c_write(DATETIME_START_REG);
     // repeated start not allowed for PCF2127
@@ -37,22 +37,24 @@ uint8_t pcf2127_get_datetime(uint8_t (* const datetime)[DATETIME_SIZE]) {
             //FIXME
             //*(*datetime + i) = i2c_readAck();
             volatile uint8_t val = i2c_readAck();
-            *(*datetime + i) = val;
+            //*(*datetime + i) = val;
+            datetime->all[i] = val;
         } else {
             //*(*datetime + i) = i2c_readNak();
             volatile uint8_t val = i2c_readNak();
-            *(*datetime + i) = val;
+            //*(*datetime + i) = val;
+            datetime->all[i] = val;
         }
     }
     i2c_stop();
     return error;
 }
 
-uint8_t pcf2127_set_datetime(const uint8_t (* const datetime)[DATETIME_SIZE]) {
+uint8_t pcf2127_set_datetime(const DatetimeBcd *const datetime) {
         uint8_t error = i2c_start(PCF2127_ADDR + I2C_WRITE);
         error |= i2c_write(DATETIME_START_REG);
         for (uint8_t i = DATETIME_SIZE; i > 0; --i) {
-            error |= i2c_write(*(*datetime + i));
+            error |= i2c_write(datetime->all[i]);
         }
         i2c_stop();
         return error;

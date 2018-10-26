@@ -1,6 +1,7 @@
 #ifndef PCF2127_H_
 #define PCF2127_H_
 
+#include "../datetimebcd_type.h"
 #include <avr/io.h>
 
 #define SDA PC4
@@ -33,7 +34,9 @@ enum { YEARS_BYTE = 6 };
 
 uint8_t pcf2127_init(void);
 uint8_t pcf2127_refresh_otp(void);
-uint8_t pcf2127_get_datetime(uint8_t (* const datetime)[DATETIME_SIZE]);
-uint8_t pcf2127_set_datetime(const uint8_t (* const datetime)[DATETIME_SIZE]);
+//uint8_t pcf2127_get_datetime(uint8_t (* const datetime)[DATETIME_SIZE]);
+//uint8_t pcf2127_set_datetime(const uint8_t (* const datetime)[DATETIME_SIZE]);
+uint8_t pcf2127_get_datetime(DatetimeBcd *const datetime);
+uint8_t pcf2127_set_datetime(const DatetimeBcd *const datetime);
 
 #endif /* PCF2127_H_ */
