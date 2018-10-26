@@ -1,6 +1,4 @@
-/*
-Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
-*/
+// Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
 
 #include "display.h"
 #include "hv5522.h"
