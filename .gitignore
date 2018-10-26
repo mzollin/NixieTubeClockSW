@@ -55,4 +55,5 @@ dkms.conf
 *.xml
 *.cproj
 *.vs
+*.atsln
 Debug

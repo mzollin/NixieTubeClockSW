@@ -46,13 +46,13 @@ DatetimeBcd get_datetime(void) {
 
     DatetimeBcd datetime;
 
-    datetime.seconds = 0;
-    datetime.minutes = data[MINUTES_BYTE];
-    datetime.hours = data[HOURS_BYTE];
+    datetime.seconds.all = data[SECONDS_BYTE];
+    datetime.minutes.all = data[MINUTES_BYTE];
+    datetime.hours.all = data[HOURS_BYTE];
 
-    datetime.days = data[DAYS_BYTE];
-    datetime.months = data[MONTHS_BYTE];
-    datetime.years = data[YEARS_BYTE];
+    datetime.days.all = data[DAYS_BYTE];
+    datetime.months.all = data[MONTHS_BYTE];
+    datetime.years.all = data[YEARS_BYTE];
     return datetime;
 }
 

@@ -296,5 +296,21 @@ void hv5522_DisplayTime(uint8_t hour, uint8_t minute, uint8_t second)        // 
 
 void hv5522_SendTime(uint8_t ll, uint8_t rl, uint8_t lm, uint8_t rm, uint8_t lr, uint8_t rr) {
     uint8_t data[8] = {0};
+
+    data[7]  = hv5522_Bin2Dec(rr);
+    data[6]  = (hv5522_Bin2Dec(rr) >> 8);
+    data[6] |= (hv5522_Bin2Dec(lr) << 2);
+    data[5]  = (hv5522_Bin2Dec(lr) >> 6);
+
+    data[5] |= (hv5522_Bin2Dec(rm) << 6);
+    data[4]  = (hv5522_Bin2Dec(rm) >> 2);
+    data[3]  = hv5522_Bin2Dec(lm);
+    data[2]  = (hv5522_Bin2Dec(lm) >> 8);
+
+    data[2] |= (hv5522_Bin2Dec(rl) << 2);
+    data[1]  = (hv5522_Bin2Dec(rl) >> 6);
+    data[1] |= (hv5522_Bin2Dec(ll) << 6);
+    data[0]  = (hv5522_Bin2Dec(ll) >> 2);
+
     hv5522_SendFrame(&data);
 }
