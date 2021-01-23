@@ -12,8 +12,8 @@ uint8_t pcf2127_init(void) {
     pcf2127_refresh_otp();
     uint8_t error = i2c_start(PCF2127_ADDR + I2C_WRITE);
     error |= i2c_write(CLKOUT_CTL_REG);
-    error |= i2c_write((OTPR_DEFAULT_VAL << OTPR_OFFSET) ||
-                       (TCR_30SEC_VAL << TCR_OFFSET) ||
+    error |= i2c_write((OTPR_DEFAULT_VAL << OTPR_OFFSET) |
+                       (TCR_30SEC_VAL << TCR_OFFSET) |
                        (COF_1024HZ_VAL << COF_OFFSET));
     i2c_stop();
     return error;

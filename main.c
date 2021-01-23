@@ -24,6 +24,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <util/delay.h>
 
 void check_settime(void);
+void secure_increase(volatile uint8_t *ptr, uint8_t min, uint8_t max, uint8_t rollover);
+void secure_decrease(volatile uint8_t *ptr, uint8_t min, uint8_t max, uint8_t rollover);
+
+extern uint8_t g_rtc_seconds;
 
 int main(void) {
     init_io();
@@ -39,11 +43,98 @@ int main(void) {
 void check_settime(void) {
     if (check_encoder().center_press) {
         DatetimeBcd datetime = get_datetime();
-        wait_encoder_click();
-        wait_encoder_click();
-        wait_encoder_click();
-        wait_encoder_click();
-        wait_encoder_click();
+
+
+        // FIXME magic number
+        for (uint8_t i = 0; i < 1; ++i) {
+
+            while(check_encoder().center_press);
+            while(!check_encoder().center_press) {
+                if (check_encoder().left_counts) {
+                    datetime.hours.tens--;
+                }
+                else if (check_encoder().right_counts) {
+                    datetime.hours.tens++;
+                }
+                display_datetime(datetime);
+            }
+            while(check_encoder().center_press);
+
+            while(check_encoder().center_press);
+            while(!check_encoder().center_press) {
+                if (check_encoder().left_counts) {
+                    datetime.hours.units--;
+                }
+                else if (check_encoder().right_counts) {
+                    datetime.hours.units++;
+                }
+                display_datetime(datetime);
+            }
+            while(check_encoder().center_press);
+
+            while(check_encoder().center_press);
+            while(!check_encoder().center_press) {
+                if (check_encoder().left_counts) {
+                    datetime.minutes.tens--;
+                }
+                else if (check_encoder().right_counts) {
+                    datetime.minutes.tens++;
+                }
+                display_datetime(datetime);
+            }
+            while(check_encoder().center_press);
+
+            while(check_encoder().center_press);
+            while(!check_encoder().center_press) {
+                if (check_encoder().left_counts) {
+                    datetime.minutes.units--;
+                }
+                else if (check_encoder().right_counts) {
+                    datetime.minutes.units++;
+                }
+                display_datetime(datetime);
+            }
+            while(check_encoder().center_press);
+
+            while(check_encoder().center_press);
+            while(!check_encoder().center_press) {
+                if (check_encoder().left_counts) {
+                    datetime.seconds.tens--;
+                }
+                else if (check_encoder().right_counts) {
+                    datetime.seconds.tens++;
+                }
+                display_datetime(datetime);
+            }
+            while(check_encoder().center_press);
+
+            while(check_encoder().center_press);
+            while(!check_encoder().center_press) {
+                if (check_encoder().left_counts) {
+                    datetime.seconds.units--;
+                }
+                else if (check_encoder().right_counts) {
+                    datetime.seconds.units++;
+                }
+                display_datetime(datetime);
+            }
+            while(check_encoder().center_press);
+
+        }
+
+
         set_datetime(datetime);
     }
+}
+
+void secure_increase(volatile uint8_t *ptr, uint8_t min, uint8_t max, uint8_t rollover)
+{
+    if(*ptr < max) (*ptr)++;
+    else if(rollover) *ptr = min;
+}
+
+void secure_decrease(volatile uint8_t *ptr, uint8_t min, uint8_t max, uint8_t rollover)
+{
+    if(*ptr > min) (*ptr)--;
+    else if(rollover) *ptr = max;
 }

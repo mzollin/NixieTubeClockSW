@@ -25,6 +25,7 @@
 #define ENC_P PD7
 
 enum { BOUNCE_TIMEOUT = 20 };
+enum { TICKS_PER_SECOND = 1024 };
 
 typedef struct {
     uint8_t left_counts;
@@ -35,5 +36,6 @@ typedef struct {
 void init_io(void);
 Encoder check_encoder(void);
 void wait_encoder_click(void);
+int8_t getEncode(void);
 
 #endif /* HARDWARE_H_ */

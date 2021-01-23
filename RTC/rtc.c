@@ -5,9 +5,6 @@
 #include "pcf2127.h"
 #include <avr/interrupt.h>
 
-static volatile uint16_t g_rtc_ticks = 0;
-static volatile uint8_t g_rtc_seconds = 0;
-
 void init_rtc(void) {
     // enable pull-ups on RTC clock and interrupt inputs
     PORTD |= (1<<RTC_CLK) | (1<<RTC_INT);
@@ -40,15 +37,4 @@ DatetimeBcd get_datetime(void) {
 
 void set_datetime(DatetimeBcd datetime) {
 
-}
-
-ISR(INT0_vect)
-{
-    if (g_rtc_seconds < UINT8_MAX) {
-        ++g_rtc_ticks;
-        if (g_rtc_ticks >= TICKS_PER_SECOND) {
-            g_rtc_ticks -= TICKS_PER_SECOND;
-            ++g_rtc_seconds;
-        }
-    }
 }

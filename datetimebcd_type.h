@@ -49,16 +49,16 @@ typedef union {
 
 typedef union {
     struct {
-        uint8_t months_unit : 4;
-        uint8_t months_tens : 1;
+        uint8_t units : 4;
+        uint8_t tens : 1;
     } __attribute__((__packed__));
     uint8_t all;
 } DatetimeBcdMonth;
 
 typedef union {
     struct {
-        uint8_t years_unit : 4;
-        uint8_t years_tens : 4;
+        uint8_t units : 4;
+        uint8_t tens : 4;
     } __attribute__((__packed__));
     uint8_t all;
 } DatetimeBcdYear;
