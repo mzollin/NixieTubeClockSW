@@ -22,7 +22,17 @@ void disable_display(void) {
     PORTB |= (1<<BOOST_EN); 
 }
 
-void display_datetime(DatetimeBcd datetime) {
+void display_datetime(DatetimeBcd datetime)
+{
+    struct digits d = {
+        .first = datetime.hours.tens,
+        .second = datetime.hours.units,
+        .third = datetime.minutes.tens,
+        .fourth = datetime.minutes.units,
+        .fifth = datetime.seconds.tens,
+        .sixth = datetime.seconds.units,
+    };
+
     enable_display();
-    hv5522_SendDigits(datetime.hours.tens, datetime.hours.units, datetime.minutes.tens, datetime.minutes.units, datetime.seconds.tens, datetime.seconds.units);
+    hv5522_show_digits(&d);
 }
