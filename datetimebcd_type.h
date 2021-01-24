@@ -1,8 +1,10 @@
-// Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
-// GNU General Public License Version 3
+/*
+ * Copyright (C) 2021 Marco Zollinger <marco@freelabs.space>
+ * GNU General Public License Version 3
+ */
 
-#ifndef DATETIME_TYPE_H_
-#define DATETIME_TYPE_H_
+#ifndef DATETIMEBCD_TYPE_H_
+#define DATETIMEBCD_TYPE_H_
 
 #include <avr/io.h>
 #include <stdbool.h>
@@ -76,4 +78,4 @@ typedef union {
     uint8_t all[7];
 } DatetimeBcd;
 
-#endif /* DATETIME_TYPE_H_ */
+#endif /* DATETIMEBCD_TYPE_H_ */

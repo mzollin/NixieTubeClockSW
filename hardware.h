@@ -1,5 +1,7 @@
-// Copyright (C) 2018 Marco Zollinger <marco@freelabs.space>
-// GNU General Public License Version 3
+/*
+ * Copyright (C) 2021 Marco Zollinger <marco@freelabs.space>
+ * GNU General Public License Version 3
+ */
 
 #ifndef HARDWARE_H_
 #define HARDWARE_H_
